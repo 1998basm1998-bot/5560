@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتيم للأقساط</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-screen" class="glass-container active-screen">
+        <div class="login-box glass-panel">
+            <h2>تسجيل الدخول</h2>
+            <p>نظام المتيم للأقساط</p>
+            <input type="password" id="login-password" placeholder="أدخل الرقم السري">
+            <button id="btn-login" class="btn btn-primary">دخول</button>
+            <p id="login-error" class="error-text" style="display: none;">الرقم السري غير صحيح!</p>
+        </div>
+    </div>
+
+    <div id="main-app" class="app-container" style="display: none;">
+        
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <h3>المتيم للأقساط</h3>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-target="dashboard-view">كشف حساب</button>
+                <button class="nav-btn" data-target="add-invoice-view">إضافة عميل/فاتورة</button>
+                <button class="nav-btn" data-target="clients-view">العملاء</button>
+                <button class="nav-btn" onclick="logout()">خروج</button>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            
+            <section id="dashboard-view" class="view-section active-view glass-panel">
+                <h2>كشف الحساب</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>إجمالي رأس المال</h3>
+                        <p id="total-capital">0 د.ع</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>إجمالي الأرباح المتوقعة</h3>
+                        <p id="total-profit">0 د.ع</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="add-invoice-view" class="view-section glass-panel">
+                <h2>إضافة فاتورة جديدة</h2>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>اسم العميل</label>
+                        <input type="text" id="client-name" placeholder="بحث باسم العميل أو إضافة جديد">
+                    </div>
+                    <div class="input-group">
+                        <label>رقم الهاتف (للواتساب)</label>
+                        <input type="text" id="client-phone" placeholder="مثال: 07800000000">
+                    </div>
+                    <div class="input-group">
+                        <label>المجموعة</label>
+                        <input type="text" id="app-group" value="المتيم للأقساط" disabled>
+                    </div>
+                    <div class="input-group">
+                        <label>اسم الكفيل</label>
+                        <input type="text" id="sponsor-name">
+                    </div>
+                    <div class="input-group">
+                        <label>نوع الصنف المباع</label>
+                        <input type="text" id="item-type" placeholder="مثال: هوت 60 برو بلس">
+                    </div>
+                    
+                    <hr class="full-width">
+                    
+                    <div class="input-group">
+                        <label>سعر الشراء (د.ع)</label>
+                        <input type="number" id="purchase-price" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>سعر البيع (د.ع)</label>
+                        <input type="number" id="sale-price" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>مبلغ الربح</label>
+                        <input type="number" id="profit-amount" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label>نسبة الفائدة %</label>
+                        <input type="number" id="interest-rate" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label>الدفعة المقدمة (د.ع)</label>
+                        <input type="number" id="down-payment" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>الباقي (د.ع)</label>
+                        <input type="number" id="remaining-amount" readonly class="text-danger">
+                    </div>
+                    <div class="input-group">
+                        <label>التسديد الشهري (د.ع)</label>
+                        <input type="number" id="monthly-installment" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>المدة (أشهر)</label>
+                        <input type="text" id="duration-months" readonly>
+                    </div>
+
+                    <button id="btn-save-invoice" class="btn btn-primary full-width">حفظ القسط</button>
+                </div>
+            </section>
+
+            <section id="clients-view" class="view-section glass-panel">
+                <h2>إدارة العملاء</h2>
+                <div id="clients-list" class="clients-container">
+                    </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
